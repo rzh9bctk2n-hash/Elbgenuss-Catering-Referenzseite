@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elbgenuss Catering | Referenzseite für Gastronomie & Events</title>
+
+  <style>
+    :root {
+      --cream: #fbf2e7;
+      --cream-2: #fff8ef;
+      --wine: #7d1f25;
+      --wine-dark: #481116;
+      --gold: #c8994b;
+      --brown: #2b1d17;
+      --muted: #7d6f64;
+      --white: #ffffff;
+      --line: rgba(72, 17, 22, 0.13);
+      --shadow: 0 28px 80px rgba(72, 17, 22, 0.16);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--cream);
+      color: var(--brown);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .sans {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .demo-badge {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 999;
+      background: rgba(72, 17, 22, 0.92);
+      color: #fff8ef;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: min(1160px, calc(100% - 34px));
+      background: rgba(255, 248, 239, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 16px 40px rgba(72, 17, 22, 0.12);
+    }
+
+    .nav {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      padding: 0 12px 0 22px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      font-size: 21px;
+      color: var(--wine-dark);
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 25%, #f5ca7a 0%, var(--gold) 38%, var(--wine) 100%);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      box-shadow: 0 12px 28px rgba(125, 31, 37, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      color: #6f4f42;
+    }
+
+    .nav-links a:hover {
+      color: var(--wine);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--wine);
+      color: #fff8ef;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 12px 30px rgba(125, 31, 37, 0.25);
+    }
+
+    .nav-cta:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      position: relative;
+      overflow: hidden;
+      background: #1f0d0e;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.68;
+      filter: saturate(1.05) contrast(1.03);
+    }
+
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(31, 13, 14, 0.92) 0%, rgba(31, 13, 14, 0.68) 42%, rgba(31, 13, 14, 0.15) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.98fr 0.72fr;
+      gap: 44px;
+      align-items: end;
+      padding: 150px 0 70px;
+      color: #fff8ef;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 9px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffdf9d;
+      background: rgba(255, 248, 239, 0.1);
+      border: 1px solid rgba(255, 248, 239, 0.2);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(52px, 8vw, 104px);
+      line-height: 0.88;
+      letter-spacing: -0.075em;
+      max-width: 780px;
+      margin-bottom: 26px;
+    }
+
+    .hero-text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(17px, 2vw, 21px);
+      color: rgba(255, 248, 239, 0.8);
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      min-height: 54px;
+      padding: 0 24px;
+      font-weight: 900;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--wine-dark);
+      box-shadow: 0 18px 40px rgba(200, 153, 75, 0.25);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255, 248, 239, 0.38);
+      color: #fff8ef;
+      background: rgba(255, 248, 239, 0.09);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      background: rgba(255, 248, 239, 0.92);
+      color: var(--brown);
+      border-radius: var(--radius-xl);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      align-self: end;
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 24px;
+      margin-bottom: 22px;
+    }
+
+    .hero-card h2 {
+      font-size: 30px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .hero-card p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    .hero-card-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .mini-stat {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      color: var(--wine);
+      font-size: 18px;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .section {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 96px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 0.58fr;
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 38px;
+    }
+
+    .section-kicker {
+      color: var(--wine);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+
+    h2.section-title {
+      font-size: clamp(36px, 5vw, 68px);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      color: var(--wine-dark);
+    }
+
+    .section-copy {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .menu-card {
+      background: var(--cream-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(72, 17, 22, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 70px rgba(72, 17, 22, 0.14);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .menu-content {
+      padding: 25px;
+    }
+
+    .menu-content span {
+      display: inline-flex;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--wine);
+      background: rgba(125, 31, 37, 0.08);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+
+    .menu-content h3 {
+      font-size: 27px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      color: var(--wine-dark);
+      margin-bottom: 11px;
+    }
+
+    .menu-content p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .split-feature {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--wine-dark);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .split-feature img {
+      width: 100%;
+      height: 100%;
+      min-height: 580px;
+      object-fit: cover;
+    }
+
+    .feature-content {
+      padding: clamp(34px, 5vw, 64px);
+      color: #fff8ef;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .feature-content .section-kicker {
+      color: #ffdf9d;
+    }
+
+    .feature-content h2 {
+      font-size: clamp(36px, 5vw, 66px);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      margin-bottom: 22px;
+    }
+
+    .feature-content > p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgba(255, 248, 239, 0.75);
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 15px;
+      align-items: start;
+      background: rgba(255, 248, 239, 0.08);
+      border: 1px solid rgba(255, 248, 239, 0.13);
+      border-radius: 20px;
+      padding: 17px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .step-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--wine-dark);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #fff8ef;
+    }
+
+    .step p {
+      color: rgba(255, 248, 239, 0.68);
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 0.8fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      min-height: 430px;
+      box-shadow: 0 18px 48px rgba(72, 17, 22, 0.09);
+    }
+
+    .gallery-card:nth-child(2) {
+      transform: translateY(38px);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      background: rgba(255, 248, 239, 0.9);
+      border-radius: 18px;
+      padding: 15px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      color: var(--wine-dark);
+      backdrop-filter: blur(12px);
+    }
+
+    .testimonial-wrap {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .quote-panel {
+      background: var(--cream-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: clamp(30px, 4vw, 48px);
+      box-shadow: 0 18px 48px rgba(72, 17, 22, 0.08);
+    }
+
+    .quote-panel .quote-mark {
+      font-size: 82px;
+      line-height: 0.8;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .quote-panel blockquote {
+      font-size: clamp(27px, 3vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--wine-dark);
+      margin-bottom: 22px;
+    }
+
+    .quote-panel p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .occasion-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .occasion {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .occasion span {
+      display: block;
+      font-size: 31px;
+      margin-bottom: 14px;
+    }
+
+    .occasion strong {
+      display: block;
+      color: var(--wine-dark);
+      font-size: 18px;
+      margin-bottom: 7px;
+    }
+
+    .occasion p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact-section {
+      background: linear-gradient(135deg, #fff8ef 0%, #f2ddc5 100%);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-box {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 92px 0;
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .contact-copy h2 {
+      color: var(--wine-dark);
+      font-size: clamp(38px, 5vw, 72px);
+      line-height: 0.92;
+      letter-spacing: -0.06em;
+      margin-bottom: 22px;
+    }
+
+    .contact-copy p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 480px;
+      margin-bottom: 26px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 11px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--wine-dark);
+      font-weight: 900;
+    }
+
+    .form-card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.68);
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      display: grid;
+      gap: 14px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+    }
+
+    label {
+      color: var(--wine-dark);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(72, 17, 22, 0.16);
+      background: #fffaf5;
+      border-radius: 16px;
+      padding: 14px;
+      font: inherit;
+      color: var(--brown);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--wine);
+      box-shadow: 0 0 0 4px rgba(125, 31, 37, 0.11);
+    }
+
+    .form-card button {
+      border: 0;
+      background: var(--wine);
+      color: #fff8ef;
+      border-radius: 999px;
+      padding: 16px 22px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 15px 34px rgba(125, 31, 37, 0.22);
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    footer {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 34px 0 72px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1000px) {
+      .topbar {
+        top: 10px;
+        width: min(100% - 20px, 1160px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner,
+      .section-head,
+      .split-feature,
+      .testimonial-wrap,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        align-items: end;
+        padding-top: 130px;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-card:nth-child(2) {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        height: 62px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero-bg::after {
+        background: linear-gradient(180deg, rgba(31, 13, 14, 0.74) 0%, rgba(31, 13, 14, 0.92) 100%);
+      }
+
+      h1 {
+        font-size: 52px;
+      }
+
+      .hero-inner {
+        width: min(100% - 28px, 1160px);
+        gap: 26px;
+        padding-bottom: 48px;
+      }
+
+      .hero-card-row,
+      .menu-grid,
+      .occasion-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section,
+      .contact-box {
+        padding: 66px 0;
+      }
+
+      .gallery-card,
+      .split-feature img {
+        min-height: 360px;
+      }
+
+      footer {
+        flex-direction: column;
+        padding-bottom: 92px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo-badge">Demo-Website · Referenzprojekt von Webdesign_Elbe</div>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#top" class="logo" aria-label="Elbgenuss Catering Startseite">
+        <span class="logo-mark">🍽</span>
+        <span>Elbgenuss</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#angebote">Angebote</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#kontakt">Anfragen</a>
+      </div>
+
+      <a class="nav-cta" href="#kontakt">Event anfragen</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Startbereich">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=1800&q=80" alt="Catering-Buffet mit angerichteten Speisen als Beispielbild" />
+      </div>
+
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow sans">Catering · Events · Genussmomente</span>
+          <h1>Feiern, die nach mehr schmecken.</h1>
+          <p class="hero-text">
+            Elbgenuss Catering begleitet private Feiern, Firmenevents und Empfänge mit frischen Ideen, stilvoller Präsentation und persönlichem Service.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn-primary">Catering anfragen</a>
+            <a href="#angebote" class="btn-secondary">Angebote entdecken</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Highlight Angebot">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=900&q=80" alt="Koch bereitet Speisen in einer Küche zu als Beispielbild" />
+          <h2>Regional gedacht. Modern serviert.</h2>
+          <p>Ob Fingerfood, Buffet oder Flying Dinner: jedes Konzept wird passend zum Anlass zusammengestellt.</p>
+
+          <div class="hero-card-row">
+            <div class="mini-stat">
+              <strong>20+</strong>
+              <span>Gäste</span>
+            </div>
+            <div class="mini-stat">
+              <strong>3</strong>
+              <span>Pakete</span>
+            </div>
+            <div class="mini-stat">
+              <strong>100%</strong>
+              <span>Planbar</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="angebote">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Angebote</div>
+          <h2 class="section-title">Für jeden Anlass der passende Genuss.</h2>
+        </div>
+        <p class="section-copy">
+          Diese Referenz zeigt, wie Gastronomie-Websites emotionaler, bildstärker und hochwertiger wirken können als klassische Dienstleisterseiten.
+        </p>
+      </div>
+
+      <div class="menu-grid">
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=900&q=80" alt="Auswahl an kleinen Speisen als Beispielbild" />
+          <div class="menu-content">
+            <span>Beliebt für Empfänge</span>
+            <h3>Fingerfood & Häppchen</h3>
+            <p>Kleine, feine Speisen für lockere Empfänge, Netzwerktreffen und private Feiern.</p>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80" alt="Frisch angerichtetes Buffet als Beispielbild" />
+          <div class="menu-content">
+            <span>Für größere Feiern</span>
+            <h3>Buffet-Konzepte</h3>
+            <p>Warm, kalt oder gemischt: flexible Buffets mit klarer Struktur und saisonalen Komponenten.</p>
+          </div>
+        </article>
+
+        <article class="menu-card">
+          <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=900&q=80" alt="Elegant gedeckter Tisch als Beispielbild" />
+          <div class="menu-content">
+            <span>Für besondere Abende</span>
+            <h3>Dinner & Service</h3>
+            <p>Ein vollständiges Event-Erlebnis mit Menüplanung, Service und liebevoller Präsentation.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="ablauf">
+      <div class="split-feature">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Restaurant-Atmosphäre mit gedeckten Tischen als Beispielbild" />
+
+        <div class="feature-content">
+          <div class="section-kicker">Ablauf</div>
+          <h2>Von der ersten Idee bis zum letzten Teller.</h2>
+          <p>
+            Eine gute Catering-Website muss nicht nur schön aussehen. Sie muss Kunden schnell erklären, wie einfach die Anfrage und Planung funktioniert.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <div>
+                <strong>Anlass beschreiben</strong>
+                <p>Gästezahl, Ort, Datum und grobe Wünsche reichen für den ersten Überblick.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">2</div>
+              <div>
+                <strong>Konzept erhalten</strong>
+                <p>Ein passender Vorschlag mit Menüideen, Ablauf und optionalem Service.</p>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-number">3</div>
+              <div>
+                <strong>Entspannt genießen</strong>
+                <p>Aufbau, Präsentation und Betreuung werden passend zum Event abgestimmt.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galerie">
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Galerie</div>
+          <h2 class="section-title">Ein Auftritt, der Appetit macht.</h2>
+        </div>
+        <p class="section-copy">
+          Große Bilder, warme Farben und klare Bereiche sorgen dafür, dass Besucher direkt ein Gefühl für Qualität und Atmosphäre bekommen.
+        </p>
+      </div>
+
+      <div class="gallery">
+        <article class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80" alt="Event mit gedeckten Tischen als Beispielbild" />
+          <div class="gallery-label">Private Feiern</div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=80" alt="Empfang mit Getränken als Beispielbild" />
+          <div class="gallery-label">Empfänge & Firmenfeiern</div>
+        </article>
+
+        <article class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Restaurant und Speisen als Beispielbild" />
+          <div class="gallery-label">Buffets & Dinner</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Kundenstimme und Anlässe">
+      <div class="testimonial-wrap">
+        <div class="quote-panel">
+          <div class="quote-mark">“</div>
+          <blockquote>Ein Catering, das nicht nur satt macht, sondern den Abend besonders wirken lässt.</blockquote>
+          <p>— Beispielhafte Kundenstimme für die Referenzseite</p>
+        </div>
+
+        <div class="occasion-grid">
+          <div class="occasion">
+            <span>🎉</span>
+            <strong>Geburtstage</strong>
+            <p>Vom lockeren Buffet bis zum stilvollen Dinner im kleinen Kreis.</p>
+          </div>
+
+          <div class="occasion">
+            <span>💼</span>
+            <strong>Firmenevents</strong>
+            <p>Planbare Verpflegung für Meetings, Empfänge und Teamveranstaltungen.</p>
+          </div>
+
+          <div class="occasion">
+            <span>🥂</span>
+            <strong>Empfänge</strong>
+            <p>Fingerfood, Getränke und kleine Genussmomente für den perfekten Start.</p>
+          </div>
+
+          <div class="occasion">
+            <span>🌿</span>
+            <strong>Sommerfeste</strong>
+            <p>Frische Ideen, unkomplizierter Aufbau und passende Präsentation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="kontakt">
+      <div class="contact-box">
+        <div class="contact-copy">
+          <div class="section-kicker">Anfrage</div>
+          <h2>Erzählen Sie uns von Ihrem Event.</h2>
+          <p>
+            Je einfacher die Anfrage, desto höher die Kontaktquote. Deshalb fragt dieses Formular nur die wichtigsten Punkte ab.
+          </p>
+
+          <div class="contact-list">
+            <span>📍 Musterhafen 8 · 21706 Drochtersen</span>
+            <span>☎ 04143 987654</span>
+            <span>✉ hallo@elbgenuss-catering.de</span>
+          </div>
+        </div>
+
+        <form class="form-card" action="#" method="post">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Max Mustermann" />
+            </div>
+
+            <div class="field">
+              <label for="date">Datum</label>
+              <input id="date" name="date" type="text" placeholder="z. B. 12.09.2026" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="guests">Gästezahl</label>
+              <input id="guests" name="guests" type="text" placeholder="z. B. 45 Personen" />
+            </div>
+
+            <div class="field">
+              <label for="event">Anlass</label>
+              <select id="event" name="event">
+                <option>Private Feier</option>
+                <option>Firmenevent</option>
+                <option>Empfang</option>
+                <option>Sonstiger Anlass</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Wünsche</label>
+            <textarea id="message" name="message" placeholder="Was ist Ihnen für Ihr Event wichtig?"></textarea>
+          </div>
+
+          <button type="submit">Unverbindlich anfragen</button>
+          <p class="form-note">Demo-Hinweis: Dieses Formular ist in der Referenzseite noch nicht technisch angebunden.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2026 Elbgenuss Catering · Demo-Referenzseite</div>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#top">Nach oben</a>
+    </div>
+  </footer>
+</body>
+</html>
